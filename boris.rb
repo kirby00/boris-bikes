@@ -1,18 +1,27 @@
 #!/usr/bin/env ruby
 
-# class Control
+class Control
 
-#   def initialize()
-#     @bikes = bike
-#   end
+#setup the bike network with bikes, stations, people etc.
+#run the bike scheme
+#create a report
 
-# end
+  def initialize()
+    @fleet = create_fleet
+    puts @fleet
+  end
 
+  def create_fleet
+    fleet = []
+      10.times {fleet << Bike.new(rand(2))}
+    fleet
+  end
 
-
+end
 
 class Bike
-  
+  attr_accessor :broken
+
   def initialize(broken)
     @broken=broken
   end
@@ -22,14 +31,6 @@ class Bike
   end
 end
 
-def scheme_with_bikes
-  fleet = []
-    10.times {fleet << Bike.new(rand(2))}
-  fleet
-end
 
-fleet = scheme_with_bikes
-puts fleet.count
-fleet.pop
-puts fleet.count
+control = Control.new
 
