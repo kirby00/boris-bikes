@@ -9,6 +9,7 @@ class Control
   def initialize
     @fleet = create_fleet
     @people = create_people
+    @stations = create_stations
   end
 
   def create_fleet
@@ -23,6 +24,12 @@ class Control
     people 
   end
 
+  def create_stations
+    stations = []
+      1.times {stations << Station.new("Clapham", 20)}
+    stations
+  end
+
   def create_report
       total_bikes = @fleet.count 
       broken_bikes = @fleet.count {|b| b.is_broken?}
@@ -30,8 +37,9 @@ class Control
       total_people = @people.count
       people_with_bikes = @people.count {|p| p.has_bike?}
       people_without_bikes = total_people-people_with_bikes
+      total_stations = @stations.count
       result = "total bikes #{total_bikes}\n" + "broken bikes #{broken_bikes}\n" + "working bikes #{working_bikes}\n"
-      result + "total people #{total_people}\n" + "people with bikes #{people_with_bikes}\n" + "people without bikes #{people_without_bikes}"
+      result + "total people #{total_people}\n" + "people with bikes #{people_with_bikes}\n" + "people without bikes #{people_without_bikes}\n" + "number of stations #{total_stations}"
   end    
 end
 
@@ -68,10 +76,21 @@ class Bike
   end
 end
 
+class Station
+
+  def initialize(name, capacity)
+    @station = name
+    @capacity = 20
+  end
+
+  def bikes_at_station
+    @bikes_at_station = rand(1..@capacity)
+  end
+end
+
 # Actual program running
 instance_of_control_class = Control.new
 puts instance_of_control_class.create_report
-
 # puts @people.inspect
 
 
