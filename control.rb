@@ -8,17 +8,14 @@ class Control
 
 attr_accessor 
 
+#================== SETUP ===========
+
   def initialize
-    # @fleet = create_fleet
     @people = create_people
     @stations = create_stations_with_bikes
+    #@garages
+    #@vans
   end
-
-  # def create_fleet
-  #   fleet = []
-  #     10.times {fleet << Bike.new}
-  #   fleet
-  # end
 
   def create_people
     people = []
@@ -28,7 +25,7 @@ attr_accessor
 
   def create_stations_with_bikes
     stations = []
-    station = Station.new("Clapham", 20)
+    station = Station.new("Clapham", 10)
     10.times{ station << Bike.new }
     stations << station
     stations
@@ -42,6 +39,8 @@ attr_accessor
     @people.select{|p| p.has_bike?}
   end
 
+#================== RUN ===========
+  
   def take_bike
     station = @stations.first
     people_without_bikes.each do |p| 
@@ -50,7 +49,16 @@ attr_accessor
   end
 
   def return_bike
+    station = @stations.first
+    people_with_bikes.each do |p|
+      p.return_bike(station) if !station.full? && rand(3).zero?
+    end
   end
+
+#van collect bikes from stations and take to garage
+#van collect bikes from garage and return to stations
+
+#================== REPORT ===========
 
   def print_report
       # total_bikes = @fleet.count 

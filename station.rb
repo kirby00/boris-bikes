@@ -17,7 +17,13 @@ attr_accessor :name, :capacity, :bikes
   end
 
   def <<(bike)
+    raise "full" if full?
     @bikes << bike
+  end
+
+  def full?
+    @bikes.count == @capacity
+    # puts "full"
   end
 
   # def bikes
@@ -27,14 +33,14 @@ attr_accessor :name, :capacity, :bikes
   # end
 
   def release_bike
-    raise "no bikes left" if !has_bikes?
+    return "no bikes left" if !has_bikes?
     @bikes.pop
   end
 
-  def receive_bike
-    raise "full" if has_bikes == @capacity
-    @bikes.push 
-  end
+  # def receive_bike
+  #   return "full" if full?
+    #  @bikes <<  
+  # end
 
 end
 

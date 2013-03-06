@@ -22,8 +22,9 @@ class Person
     #person status changes such that has_bike? == 1
     #declare probability that person wants to take bike
   def return_bike(station)
-    @bike = station.receive_bike
-    puts "thanks for returning your bike"
+    station << @bike
+    @bike=nil
+    puts "I returned a bike"
     #if you have a bike, you have to return it
   end
 
