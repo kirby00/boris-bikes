@@ -3,6 +3,7 @@
 
 class Bike
 
+
   def initialize
     @broken = rand(2)
   end

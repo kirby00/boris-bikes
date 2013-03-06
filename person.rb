@@ -12,7 +12,7 @@ class Person
 
   def take_bike(station)
     @bike = station.release_bike
-    puts "I took a bike"
+    puts "Person: I took a bike"
     # if station.bikes_at_station == 0
     #    puts "no bikes!" #and call van
     # end
@@ -24,7 +24,7 @@ class Person
   def return_bike(station)
     station << @bike
     @bike=nil
-    puts "I returned a bike"
+    puts "Person: I returned a bike"
     #if you have a bike, you have to return it
   end
 

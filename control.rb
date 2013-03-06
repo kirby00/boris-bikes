@@ -14,7 +14,7 @@ attr_accessor
     @people = create_people
     @stations = create_stations_with_bikes
     #@garages
-    #@vans
+    @vans = create_vans
   end
 
   def create_people
@@ -39,6 +39,15 @@ attr_accessor
     @people.select{|p| p.has_bike?}
   end
 
+  def create_vans
+    vans = []
+    van = Van.new
+    vans << van
+    vans
+  end
+
+
+
 #================== RUN ===========
   
   def take_bike
@@ -55,8 +64,15 @@ attr_accessor
     end
   end
 
-#van collect bikes from stations and take to garage
-#van collect bikes from garage and return to stations
+  def call_van
+    station = @stations.first
+    van = @vans.first
+    van.collect(station)
+  end
+
+
+#van collect broken bikes from stations and take to garage
+#van collect fixed bikes from garage and return to stations
 
 #================== REPORT ===========
 
