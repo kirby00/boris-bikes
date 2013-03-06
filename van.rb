@@ -3,13 +3,13 @@
 class Van
 
   def initialize
-    @bikes = []
+    @bikes_in_van = []
   end
 
   def collect(station)
-    @bikes = @bikes | station.broken_bikes
-    puts "Van: I collected some bikes" unless @bikes.empty?
-    puts @bikes.inspect
+    @bikes_in_van << station.broken
+    puts "Van: I collected some bikes" unless @bikes_in_van.empty?
+    puts @bikes_in_van.inspect
     # @vans << station.broken.each
   end
 end

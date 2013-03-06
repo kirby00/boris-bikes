@@ -5,7 +5,7 @@ class Bike
 
 
   def initialize
-    @broken = rand(2)
+    @broken = 1
   end
 
   def is_broken?

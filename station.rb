@@ -34,7 +34,7 @@ attr_accessor :name, :capacity, :bikes, :broken_bikes
   # end
 
   def release_bike
-    return "no bikes left" if !has_bikes?
+    return "no bikes left" if !has_bikes? 
     @bikes.pop
   end
 
